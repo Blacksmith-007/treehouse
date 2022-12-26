@@ -41,10 +41,13 @@ fn what_is_your_name() -> String {
 } 
 
 fn main() {
+    let my_action = VisitorAction::AcceptWithNote{ note: "Give them a taco"};
     let mut visitor_list = vec![
-        Visitor::new("bert", "Hello Bert, enjoy your treehouse"),
-        Visitor::new("steve", "Hi Steve. Your milk is in the fridge."),
-        Visitor::new("fred", "Wow, who invited Fred?"),
+        Visitor::new("Bert", VisitorAction::Accept, 45),
+        Visitor::new("steve", VisitorAction::AcceptWithNote{
+            note: String::from("Lactose-free milk is in the fridge")
+        } 15),
+        Visitor::new("fred", VisitorAction::Refuse, 30),
     ];
 
 loop {
