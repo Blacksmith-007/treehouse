@@ -26,7 +26,18 @@ impl Visitor {
     }
     
     fn greet_visitor(&self) {
-        println!("{}", self.greeting);
+        math &self.action {
+            VisitorAction::Accept => println!("Welcome to the tree house, {}", self.name),
+            VisitorAction::AcceptWithNote { note } => {
+                println!("Welcome to the treehouse, {}", self.name);
+                println!("{}", note);
+                if self.age < 21 {
+                    println!("Do not serve alcohol to {}", self.name)
+                }
+            },
+            VisitorAction::Probation => println!("{} is now a probationary member", self.name),
+            VisitorAction::Refuse => println!("Do not allow {} in!", self.name),
+        }
     }
 }
 
@@ -46,7 +57,7 @@ fn main() {
         Visitor::new("Bert", VisitorAction::Accept, 45),
         Visitor::new("steve", VisitorAction::AcceptWithNote{
             note: String::from("Lactose-free milk is in the fridge")
-        } 15),
+        }, 15),
         Visitor::new("fred", VisitorAction::Refuse, 30),
     ];
 
@@ -65,7 +76,7 @@ match known_visitor {
             break;
         } else {
             println!("{} is not on the visitor list.", name);
-            visitor_list.push(Visitor::new(&name, "New friend"));
+            visitor_list.push(Visitor::new(&name, VisitorAction::Probation, 0));
         }
     }
 }
