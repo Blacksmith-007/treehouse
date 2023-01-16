@@ -25,7 +25,7 @@ impl Visitor {
         }
     }
     
-    fn greet_visitor(&self) {
+fn greet_visitor(&self) {
         math &self.action {
             VisitorAction::Accept => println!("Welcome to the tree house, {}", self.name),
             VisitorAction::AcceptWithNote { note } => {
