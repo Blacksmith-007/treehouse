@@ -10,18 +10,17 @@ enum VisitorAction {
     Probation,
 }
 
+#[derive(Debug)]
 struct Visitor {
     name: String,
-    greeting: String,
     action: VisitorAction,
     age: i8,
 }
 
 impl Visitor {
-    fn new(name: &str, greeting: &str, action: VisitorAction, age: i8) -> Self {
+    fn new(name: &str, action: VisitorAction, age: i8) -> Self {
         Self {
             name: name.to_lowercase(),
-            greeting: greeting.to_string(),
             action,
             age,
         }
@@ -53,7 +52,7 @@ fn what_is_your_name() -> String {
 
 fn main() {
     let my_action = VisitorAction::AcceptWithNote {
-        note: "Give them a taco",
+        note: "Give them a taco".to_string(),
     };
     let mut visitor_list = vec![
         Visitor::new("Bert", VisitorAction::Accept, 45),
